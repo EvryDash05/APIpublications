@@ -4,10 +4,12 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.io.Serializable;
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class UserDTO {
+public class UserDTO implements Serializable {
 
     private Long userId;
     private String userName;
@@ -20,6 +22,11 @@ public class UserDTO {
         this.password = password;
         this.email = email;
         this.userAge = userAge;
+    }
+
+    public UserDTO(Long userId, String userName) {
+        this.userId = userId;
+        this.userName = userName;
     }
 
 }

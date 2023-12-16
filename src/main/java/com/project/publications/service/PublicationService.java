@@ -3,6 +3,7 @@ package com.project.publications.service;
 import com.project.publications.dto.PublicationDTO;
 import com.project.publications.models.Comment;
 import com.project.publications.models.Publication;
+import com.project.publications.models.User;
 import com.project.publications.repository.PublicationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,14 +15,18 @@ public class PublicationService {
 
     @Autowired
     private PublicationRepository publicationRepository;
+    @Autowired
+    private UserService userService;
+
 
     public List<Publication> getListPublications() {
         return publicationRepository.findAll();
     }
 
     public Publication createPublication(PublicationDTO publicationDTO) {
+        User user = userService.getUserById(publicationDTO.getUserDTO().getUserId());
         Publication publication = new Publication(publicationDTO.getTittle(),
-                publicationDTO.getContent(), publicationDTO.getUser());
+                publicationDTO.getContent(), user);
         return publicationRepository.save(publication);
     }
 
