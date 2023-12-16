@@ -22,11 +22,16 @@ public class PublicationController {
     @Autowired
     private UserService userService;
 
-
     @GetMapping("/listPublications")
-    public ResponseEntity<?> getListPublications() {
-        List<Publication> publicationsList = publicationService.getListPublications();
+    public ResponseEntity<PublicationDTO> getListPublications() {
+        List<PublicationDTO> publicationsList = publicationService.getListPublications();
         return publicationsList != null ? ResponseEntity.ok(publicationsList) : ResponseEntity.notFound().build();
+    }
+
+    @GetMapping("/{publicationId}")
+    public ResponseEntity<Publication> getPublication(@PathVariable Long publicationId){
+        Publication publication = publicationService.getPublicationById(publicationId);
+        return publication != null ? ResponseEntity.ok(publication) : ResponseEntity.notFound().build();
     }
 
     @PostMapping(value = "/createPublication/{userId}", consumes = MediaType.APPLICATION_JSON_VALUE)

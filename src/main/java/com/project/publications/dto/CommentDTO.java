@@ -6,17 +6,18 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class CommentDTO {
+public class CommentDTO implements Serializable {
 
-
+    private Long commnetId;
     private String commentContent;
     /*RELATIONS*/
-    private Publication publication;
-    private User user;
+    private PublicationDTO publicationDTO;
+    private UserDTO userDTO;
 
 }
