@@ -7,6 +7,7 @@ import com.project.publications.service.PublicationService;
 import com.project.publications.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -28,14 +29,15 @@ public class PublicationController {
         return publicationsList != null ? ResponseEntity.ok(publicationsList) : ResponseEntity.notFound().build();
     }
 
-    @PostMapping("/createPublication/{userId}")
-    @ResponseStatus(HttpStatus.OK)
-    public void getPublicationsList(@RequestBody PublicationDTO publicationDTO, @PathVariable Long userId) {
+    @PostMapping(value = "/createPublication/{userId}", consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<String> getPublicationsList(@RequestBody PublicationDTO publicationDTO, @PathVariable Long userId) {
         User findUser = userService.getUserById(userId);
         publicationDTO.setUser(findUser);
         if (findUser != null) {
             publicationService.createPublication(publicationDTO);
+            return ResponseEntity.ok("Created publication");
         }
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body("User not found");
     }
 
 }

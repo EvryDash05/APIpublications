@@ -28,7 +28,7 @@ public class Comment {
     //Relations
     @ManyToOne
     @JoinColumn(name = "id_publication")
-    @JsonBackReference
+    @JsonBackReference(value = "comments-reference")
     private Publication publication;
 
     @ManyToOne()

@@ -29,9 +29,11 @@ public class PublicationService {
         return publicationRepository.findById(publicationId).orElse(null);
     }
 
-    public void addComment(Comment commentDTO) {
-        Comment comment = new Comment(commentDTO.getCommentContent(), commentDTO.getPublication(), commentDTO.getUser());
+    public void addComment(Comment commentDTO, Long publicationId) {
 
+        Comment comment = new Comment(commentDTO.getCommentContent(), commentDTO.getPublication(), commentDTO.getUser());
+        Publication publication = getPublication(publicationId);
+        publication.addComment(comment);
     }
 
 

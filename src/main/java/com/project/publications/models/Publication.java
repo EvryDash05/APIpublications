@@ -29,7 +29,7 @@ public class Publication {
 
     //Relations
     @OneToMany(mappedBy = "publication")
-    @JsonManagedReference
+    @JsonManagedReference(value = "comments-reference")
     private List<Comment> listComments;
 
     @ManyToOne()
