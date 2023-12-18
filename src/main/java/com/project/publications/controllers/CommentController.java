@@ -15,7 +15,7 @@ public class CommentController {
     @Autowired
     private CommentService commentService;
 
-    @GetMapping("/listComments/{publicationId}")
+    /*@GetMapping("/listComments/{publicationId}")
     public ResponseEntity<?> getListCommentByPublication(@PathVariable Long publicationId){
         List<Comment> listComments = commentService.publicationCommentListById(publicationId);
         return listComments != null ? ResponseEntity.ok(listComments) : ResponseEntity.notFound().build();
@@ -25,7 +25,7 @@ public class CommentController {
     public ResponseEntity<String> deleteComment(@PathVariable Long commentId){
         commentService.deleteCommentById(commentId);
         return ResponseEntity.ok("Delete comment");
-    }
+    }*/
 
 
 }

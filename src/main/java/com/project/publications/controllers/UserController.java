@@ -18,19 +18,20 @@ public class UserController {
 
     @GetMapping("/listUsers")
     public ResponseEntity<?> getListUsers(){
-        List<User> userList = userService.getListUsers();
+        List<UserDTO> userList = userService.getListUsers();
         return userList != null ? ResponseEntity.ok(userList) : ResponseEntity.notFound().build();
     }
 
     @PostMapping("/register")
-    public void registerUser(@RequestBody UserDTO userDTO){
-        userService.createUser(userDTO);
+    public ResponseEntity<String> registerUser(@RequestBody UserDTO userDTO){
+        User user = userService.createUser(userDTO);
+        return user != null ? ResponseEntity.ok("Create user") : ResponseEntity.noContent().build();
     }
 
     @GetMapping("/{userId}")
     public ResponseEntity<?> userById(@PathVariable Long userId){
-        User user = userService.getUserById(userId);
-        return user != null ? ResponseEntity.ok(user) : ResponseEntity.notFound().build();
+        UserDTO userDto = userService.getUserById(userId);
+        return userDto != null ? ResponseEntity.ok(userDto) : ResponseEntity.notFound().build();
     }
 
 }

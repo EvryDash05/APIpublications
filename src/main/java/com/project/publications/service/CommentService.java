@@ -18,7 +18,7 @@ public class CommentService {
     @Autowired
     private PublicationService publicationService;
 
-    public List<Comment> publicationCommentListById(Long publicationId){
+    /*public List<Comment> publicationCommentListById(Long publicationId){
         Publication publication = publicationService.getPublicationById(publicationId);
         return publication.getListComments();
     }
@@ -38,6 +38,6 @@ public class CommentService {
     public boolean deleteCommentById(Long publicationId){
         commentRepository.deleteById(publicationId);
         return true;
-    }
+    }*/
 
 }

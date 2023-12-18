@@ -19,7 +19,7 @@ public class PublicationService {
     private UserService userService;
 
 
-    public List<Publication> getListPublications() {
+    /*public List<Publication> getListPublications() {
         return publicationRepository.findAll();
     }
 
@@ -39,7 +39,7 @@ public class PublicationService {
         Comment comment = new Comment(commentDTO.getCommentContent(), commentDTO.getPublication(), commentDTO.getUser());
         Publication publication = getPublication(publicationId);
         publication.addComment(comment);
-    }
+    }*/
 
 
 }

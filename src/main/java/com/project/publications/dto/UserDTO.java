@@ -24,9 +24,10 @@ public class UserDTO implements Serializable {
         this.userAge = userAge;
     }
 
-    public UserDTO(Long userId, String userName) {
+    public UserDTO(Long userId, String userName, int userAge) {
         this.userId = userId;
         this.userName = userName;
+        this.userAge = userAge;
     }
 
 }

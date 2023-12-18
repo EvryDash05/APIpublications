@@ -22,7 +22,7 @@ public class PublicationController {
     @Autowired
     private UserService userService;
 
-    @GetMapping("/listPublications")
+    /*@GetMapping("/listPublications")
     public ResponseEntity<PublicationDTO> getListPublications() {
         List<PublicationDTO> publicationsList = publicationService.getListPublications();
         return publicationsList != null ? ResponseEntity.ok(publicationsList) : ResponseEntity.notFound().build();
@@ -43,6 +43,6 @@ public class PublicationController {
             return ResponseEntity.ok("Created publication");
         }
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body("User not found");
-    }
+    }*/
 
 }
